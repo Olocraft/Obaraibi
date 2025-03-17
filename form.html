@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OBARAIBI - Loan Application</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background-color: #f5f5f5;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* Updated Header Styles */
+      header {
+        background-color: #fff;
+        padding: 15px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 50px;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        text-decoration: none;
+      }
+
+      .logo img {
+        height: 40px;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 20px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        color: #077f43;
+      }
+
+      .header-icons {
+        display: flex;
+        align-items: center;
+      }
+
+      .header-icons a {
+        margin-left: 15px;
+        color: #333;
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      /* Responsive Header */
+      @media (max-width: 768px) {
+        nav ul {
+          display: none;
+        }
+
+        .header-icons a {
+          margin-left: 10px;
+        }
+
+        .logo {
+          font-size: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 15px;
+        }
+
+        .header-icons a {
+          font-size: 16px;
+        }
+      }
+
+      /* Main Form Container */
+      .form-container {
+        background-color: #121212;
+        color: white;
+        border-radius: 10px;
+        padding: 30px;
+        margin-bottom: 20px;
+      }
+
+      .form-title {
+        color: #ffc107;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+      }
+
+      .terms-box {
+        background-color: white;
+        color: #333;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+
+      .terms-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .terms-content p {
+        margin-bottom: 10px;
+      }
+
+      .terms-content ul {
+        margin-left: 20px;
+        margin-bottom: 10px;
+      }
+
+      .agree-btn {
+        background-color: #ffc107;
+        border: none;
+        color: black;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        width: 200px;
+        margin: 0 auto;
+        display: block;
+      }
+
+      /* Form Fields */
+      .form-fields {
+        background-color: white;
+        border-radius: 10px;
+        padding: 30px;
+      }
+
+      .form-fields h3 {
+        margin-bottom: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f5f5f5;
+      }
+
+      .submit-btn {
+        background-color: #ffc107;
+        border: none;
+        color: black;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        width: 200px;
+        margin: 20px auto 0;
+        display: block;
+      }
+
+      .interest-info {
+        text-align: right;
+        font-size: 12px;
+        color: #666;
+        margin-top: 5px;
+      }
+
+      .form-note {
+        margin-top: 30px;
+        font-size: 12px;
+        color: #666;
+      }
+
+      .form-note ul {
+        margin-left: 20px;
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-content,
+        .why-us-container,
+        .cta-content {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .hero-text h1 {
+          font-size: 1.5rem;
+          margin-bottom: 20px;
+          line-height: 1.2;
+        }
+
+        .hero-text,
+        .why-us-text,
+        .cta-text {
+          padding-right: 0;
+          margin-bottom: 30px;
+          text-align: center;
+        }
+
+        .why-us-text h2,
+        .cta-text h2 {
+          text-align: center;
+        }
+
+        .steps-grid,
+        .reviews-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .footer-container {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-size: ;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        nav ul {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header>
+        <div class="container header-container">
+          <a href="form.html" class="logo">
+            <img src="Group 1000004186.png" alt="OBARABU Logo" />
+          </a>
+
+          <nav>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </nav>
+
+          <div class="header-icons">
+            <a href="#"><i class="fas fa-search"></i></a>
+            <a href="#"><i class="fas fa-shopping-cart"></i></a>
+            <a href="#"><i class="fas fa-user"></i></a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Form -->
+      <div class="form-container">
+        <h2 class="form-title">LOAN APPLICATION FORM</h2>
+        <p style="text-align: center; margin-bottom: 20px">
+          First agree to our Terms and Conditions
+        </p>
+
+        <div class="terms-box">
+          <div class="terms-header">
+            <div class="logo-icon">O</div>
+            <strong>OBARABU</strong>
+          </div>
+          <div class="terms-content">
+            <p>
+              We've created OBARAIBI so that everybody like you who has
+              financial integrity, consistency and responsibility collateral as
+              guarantee, will not have to wait too long to have access to money
+              from our company.
+            </p>
+
+            <p>
+              By submitting your fund application form you hereby declare you
+              will always repay without making a fuss.
+            </p>
+
+            <p>
+              It is our guide to keep our business dealings Discreet. Our
+              end-to-end policy is on that all our customers receive discreetly
+              between you and us. This is why we would like to conduct a third
+              party identity verification via WhatsApp to confirm that the
+              information you provided is accurate and verify that you are
+              entitled to the loan you have submitted for collateral.
+            </p>
+
+            <p>
+              We kindly request you to share your National Identification Number
+              (NIN) which you might have used to set up WhatsApp on start.
+            </p>
+
+            <p>
+              Please note that we will only go through the above outlined to
+              validate your identity from your loan amount or your investment
+              collaboration to explicit.
+            </p>
+
+            <p>Things your Collateral is acceptable:</p>
+            <ul>
+              <li>
+                That your phone you wish you sent to our Official WhatsApp and
+                verified by you.
+              </li>
+              <li>Is in place.</li>
+              <li>
+                That the owner has authorized you to sell / pawn it and it is
+                not currently used as a collateral in any existing money lending
+                / legal agreement or whatsoever e.g Bank Pos etc.
+              </li>
+              <li>
+                That your repayment will be made on or before (30days) on the
+                day of expiration as stated on this document.
+              </li>
+            </ul>
+
+            <p>Signing / Agreeing to this document means that:</p>
+            <ul>
+              <li>
+                That you grant us complete ownership of your collateral if you
+                fail to make your repayment as at when due.
+              </li>
+              <li>
+                That on no account would this (iPhone, iPad, etc.) must be
+                signed out of iCloud and password removed.
+              </li>
+              <li>
+                That you will pay a fee of N(XXXX) for collateral handling.
+              </li>
+            </ul>
+
+            <p>Your Name: _____________</p>
+            <p>Date: _____________</p>
+
+            <p>
+              All our email correspondence will be carefully and politely made
+              with our staff. That any order, directive or smart move shall
+              result to mask the use of police force or legal actions with a
+              compulsory fine.
+            </p>
+
+            <p>
+              Your company that will be determined by us, shall take you word as
+              the right to sue whoever person (including force to retrieve our
+              full repayment amount and every extra cost incurred in the
+              process).
+            </p>
+
+            <p>Please Note:</p>
+            <ul>
+              <li>
+                That all repayments must be made to the account bearing the name
+                (xxx Our Limited or XX).
+              </li>
+              <li>XXXXX, every Nigerian will need to give and many other.</li>
+            </ul>
+
+            <p>
+              I hereby declare that I have read, understood and agree to these
+              terms and conditions by signing my name on this document.
+            </p>
+          </div>
+        </div>
+
+        <button id="agreeBtn" class="agree-btn">I Agree</button>
+      </div>
+
+      <!-- Application Form Fields - Initially Hidden -->
+      <div id="applicationForm" class="form-fields" style="display: none">
+        <h3>Fill in the form</h3>
+
+        <form id="loanForm">
+          <div class="form-group">
+            <label for="fullName">Name (Surname first):</label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="gender">Gender:</label>
+            <input
+              type="text"
+              id="gender"
+              name="gender"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input
+              type="date"
+              id="dob"
+              name="dob"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="address">Residential Address:</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="occupation">Occupation:</label>
+            <input
+              type="text"
+              id="occupation"
+              name="occupation"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="collateral">Type of Collateral:</label>
+            <input
+              type="text"
+              id="collateral"
+              name="collateral"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="nin">NIN:</label>
+            <input
+              type="text"
+              id="nin"
+              name="nin"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="loanAmount">Loan Amount:</label>
+            <input
+              type="number"
+              id="loanAmount"
+              name="loanAmount"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="loanTenure">Loan Tenure:</label>
+            <input
+              type="number"
+              id="loanTenure"
+              name="loanTenure"
+              class="form-control"
+              required
+            />
+            <div class="interest-info">
+              (1% & 27% Weekly and monthly respectively)
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">Submit Form</button>
+        </form>
+
+        <div class="form-note">
+          <p>Note:</p>
+          <ul>
+            <li>The service begins immediately money is disbursed.</li>
+            <li>No refund, no disbursement.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Success Message - Initially Hidden -->
+      <div
+        id="successMessage"
+        style="
+          display: none;
+          background-color: #4caf50;
+          color: white;
+          padding: 20px;
+          border-radius: 10px;
+          text-align: center;
+          margin-top: 20px;
+        "
+      >
+        <h3>Application Submitted Successfully!</h3>
+        <p>
+          Thank you for applying. Our team will review your application and
+          contact you shortly.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // Show application form after agreeing to terms
+      document
+        .getElementById("agreeBtn")
+        .addEventListener("click", function () {
+          document.getElementById("applicationForm").style.display = "block";
+          // Scroll to application form
+          document
+            .getElementById("applicationForm")
+            .scrollIntoView({ behavior: "smooth" });
+        });
+
+      // Handle form submission
+      document
+        .getElementById("loanForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get form data
+          const formData = {
+            fullName: document.getElementById("fullName").value,
+            gender: document.getElementById("gender").value,
+            dob: document.getElementById("dob").value,
+            address: document.getElementById("address").value,
+            occupation: document.getElementById("occupation").value,
+            collateral: document.getElementById("collateral").value,
+            nin: document.getElementById("nin").value,
+            loanAmount: document.getElementById("loanAmount").value,
+            loanTenure: document.getElementById("loanTenure").value,
+            submissionDate: new Date().toISOString(),
+          };
+
+          // Send data to Google Sheets
+          submitToGoogleSheets(formData);
+        });
+
+      // Function to submit form data to Google Sheets
+      function submitToGoogleSheets(formData) {
+        // Replace with your actual Google Apps Script Web App URL
+        const scriptURL =
+          "https://docs.google.com/spreadsheets/d/1rCd2MLz6qdlGL07dRhzlqDyT0B1uHBETe_ABkJgZNMM/edit?usp=sharing";
+
+        // Convert form data to URL parameters
+        const formDataParams = new URLSearchParams();
+        Object.keys(formData).forEach((key) => {
+          formDataParams.append(key, formData[key]);
+        });
+
+        // Send data to Google Sheets
+        fetch(scriptURL, {
+          method: "POST",
+          body: formDataParams,
+        })
+          .then((response) => {
+            console.log("Success!", response);
+            // Show success message
+            document.getElementById("applicationForm").style.display = "none";
+            document.getElementById("successMessage").style.display = "block";
+            // Scroll to success message
+            document
+              .getElementById("successMessage")
+              .scrollIntoView({ behavior: "smooth" });
+          })
+          .catch((error) => {
+            console.error("Error!", error.message);
+            alert(
+              "There was an error submitting your application. Please try again."
+            );
+          });
+      }
+    </script>
+  </body>
+</html>
