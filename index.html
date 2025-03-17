@@ -196,6 +196,7 @@ nav ul li a:hover {
       .hero-image img {
         max-width: 100%;
         border-radius: 10px;
+        margin-bottom: 0px;
       }
 
       /* Why Choose Us */
@@ -524,10 +525,12 @@ nav ul li a:hover {
         .cta-content {
           flex-direction: column;
           text-align: center;
+          font-size: 0.9rem;
         }
 
         .hero-text h1{
-          font-size: 1.5rem;
+          
+          font-size: 1.6rem;
         margin-bottom: 20px;
         line-height: 1.2;
 
@@ -601,7 +604,7 @@ nav ul li a:hover {
     <section class="hero">
       <div class="container hero-content">
         <div class="hero-text">
-          <h1>Whenever You need Money</h1>
+          <h1><span id="typed-text"></span></h1></h1>
           <p>
             Whether it's a dream renovations, education, an unexpected medical expenses, business overheads or a trip to your promised land, We got you, our
             loans are designed with your unique financial journey in mind.
@@ -852,6 +855,47 @@ nav ul li a:hover {
           }
         });
       });
+      // Typing animation
+      const typedTextSpan = document.querySelector("#typed-text");
+      const textArray = [
+        "Whenever You Need Money",
+        "We've got You Covered",
+        "Safe and Transparent",
+        "Fast and Secure",
+      ];
+      const typingDelay = 100;
+      const erasingDelay = 50;
+      const newTextDelay = 2000;
+      let textArrayIndex = 0;
+      let charIndex = 0;
+
+      function type() {
+        if (charIndex < textArray[textArrayIndex].length) {
+          typedTextSpan.textContent +=
+            textArray[textArrayIndex].charAt(charIndex);
+          charIndex++;
+          setTimeout(type, typingDelay);
+        } else {
+          setTimeout(erase, newTextDelay);
+        }
+      }
+
+      function erase() {
+        if (charIndex > 0) {
+          typedTextSpan.textContent = textArray[textArrayIndex].substring(
+            0,
+            charIndex - 1
+          );
+          charIndex--;
+          setTimeout(erase, erasingDelay);
+        } else {
+          textArrayIndex++;
+          if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+          setTimeout(type, typingDelay + 1100);
+        }
+      }
+
+      setTimeout(type, newTextDelay + 250);
     </script>
   </body>
 </html>
