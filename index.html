@@ -857,6 +857,57 @@ nav ul li a:hover {
           }
         });
       });
+
+       // Scroll animations
+      gsap.from(".hero", {
+        scrollTrigger: {
+          trigger: ".mission",
+          start: "top center",
+        },
+        opacity: 0,
+        y: 100,
+        duration: 1,
+      });
+
+      gsap.from(".why-us", {
+        scrollTrigger: {
+          trigger: ".why-us",
+          start: "top center",
+        },
+        opacity: 0,
+        y: 100,
+        duration: 1,
+      });
+
+        gsap.from(".steps", {
+        scrollTrigger: {
+          trigger: ".steps",
+          start: "top center",
+        },
+        opacity: 0,
+        y: 100,
+        duration: 1,
+      });
+        gsap.from(".cta", {
+        scrollTrigger: {
+          trigger: ".cta",
+          start: "top center",
+        },
+        opacity: 0,
+        y: 100,
+        duration: 1,
+      });
+
+      gsap.from(".faq-item", {
+        scrollTrigger: {
+          trigger: ".faq",
+          start: "top center",
+        },
+        opacity: 0,
+        y: 50,
+        stagger: 0.2,
+        duration: 0.8,
+      });
       // Typing animation
       const typedTextSpan = document.querySelector("#typed-text");
       const textArray = [
