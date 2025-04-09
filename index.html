@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -178,7 +179,7 @@ nav ul li a:hover {
       }
 
       .hero-text h1 {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
         margin-bottom: 20px;
         line-height: 1.2;
         color: #ffc107;
@@ -856,57 +857,6 @@ nav ul li a:hover {
             toggle.textContent = "-";
           }
         });
-      });
-
-       // Scroll animations
-      gsap.from(".hero", {
-        scrollTrigger: {
-          trigger: ".mission",
-          start: "top center",
-        },
-        opacity: 0,
-        y: 100,
-        duration: 1,
-      });
-
-      gsap.from(".why-us", {
-        scrollTrigger: {
-          trigger: ".why-us",
-          start: "top center",
-        },
-        opacity: 0,
-        y: 100,
-        duration: 1,
-      });
-
-        gsap.from(".steps", {
-        scrollTrigger: {
-          trigger: ".steps",
-          start: "top center",
-        },
-        opacity: 0,
-        y: 100,
-        duration: 1,
-      });
-        gsap.from(".cta", {
-        scrollTrigger: {
-          trigger: ".cta",
-          start: "top center",
-        },
-        opacity: 0,
-        y: 100,
-        duration: 1,
-      });
-
-      gsap.from(".faq-item", {
-        scrollTrigger: {
-          trigger: ".faq",
-          start: "top center",
-        },
-        opacity: 0,
-        y: 50,
-        stagger: 0.2,
-        duration: 0.8,
       });
       // Typing animation
       const typedTextSpan = document.querySelector("#typed-text");
