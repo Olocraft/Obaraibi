@@ -23,67 +23,137 @@
       }
 
       /* Updated Header Styles */
+            /* Header */
       header {
-        background-color: #fff;
-        padding: 15px 0;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        position: sticky;
-        top: 0;
-        z-index: 100;
+  background-color: #fff;
+  border-radius: 20px;
+  margin: 0px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  margin:20px;
+
+  z-index: 1000;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: #000;
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+.logo span {
+  color: #077f43;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+  nav ul li {
+  margin-left: 20px;
+}
+
+    nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+    nav ul li a:hover {
+  color: #077f43;
+}
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
       }
 
-      .header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-radius: 50px;
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: #077f43;
+        margin: 2px 0;
       }
 
-      .logo {
-        font-size: 24px;
+      .nav-links {
+    display: flex;
+    align-items: center;
+  }
+
+      .nav-links a {
+        color: black;
+        text-decoration: none;
         font-weight: bold;
-        color: #333;
-        text-decoration: none;
-      }
-
-      .logo img {
-        height: 40px;
-      }
-
-      nav ul {
-        display: flex;
-        list-style: none;
-      }
-
-      nav ul li {
-        margin-left: 20px;
-      }
-
-      nav ul li a {
-        text-decoration: none;
-        color: #333;
-        font-weight: 500;
         transition: color 0.3s ease;
       }
 
-      nav ul li a:hover {
+      .nav-links a:hover {
         color: #077f43;
       }
-
-      .header-icons {
-        display: flex;
-        align-items: center;
-      }
-
-      .header-icons a {
-        margin-left: 15px;
-        color: #333;
-        text-decoration: none;
-        font-size: 18px;
-      }
-
+.header-icons {
+  display: flex;
+  align-items: center;
+}
+.header-icons a {
+  margin-left: 15px;
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+}
       /* Responsive Header */
       @media (max-width: 768px) {
+        .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: block;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links ul li {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .hamburger {
+    display: flex;
+    cursor: pointer;
+  }
         nav ul {
           display: none;
         }
@@ -290,28 +360,31 @@
   <body>
     <div class="container">
       <!-- Header -->
-      <header>
-        <div class="container header-container">
-          <a href="form.html" class="logo">
-            <img src="Group 1000004186.png" alt="OBARABU Logo" />
-          </a>
-
-          <nav>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Blog</a></li>
-            </ul>
-          </nav>
-
-          <div class="header-icons">
-            <a href="#"><i class="fas fa-search"></i></a>
-            <a href="#"><i class="fas fa-shopping-cart"></i></a>
-            <a href="#"><i class="fas fa-user"></i></a>
-          </div>
+       <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <a href="form.html" class="logo">
+          <img src="Group 1000004186.png" />
+        </a>
+        
+        <div class="hamburger">
+          <span><a href="#">Home</a></span>
+          <span><a href="#">About</a></span>
+          <span><a href="#">Services</a></span>
         </div>
-      </header>
+        
+        <nav class="nav-links">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="https://wa.me/message/LOZSRLQ7UTRUA1" class="btn">Chat with Us</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    
 
       <!-- Main Form -->
       <div class="form-container">
