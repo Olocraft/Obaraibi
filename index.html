@@ -71,12 +71,20 @@
       /* Header */
       header {
   background-color: #fff;
-  padding: 15px 0;
+  border-radius: 20px;
+  margin: 0px;
+  padding: 15px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
-  z-index: 100;
+  margin:20px;
+
+  z-index: 1000;
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: #000;
 }
+
 
 .container {
   max-width: 1200px;
@@ -106,21 +114,49 @@ nav ul {
   list-style: none;
 }
 
-nav ul li {
+  nav ul li {
   margin-left: 20px;
 }
 
-nav ul li a {
+    nav ul li a {
   text-decoration: none;
   color: #333;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
+    nav ul li a:hover {
   color: #077f43;
 }
 
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: #077f43;
+        margin: 2px 0;
+      }
+
+      .nav-links {
+    display: flex;
+    align-items: center;
+  }
+
+      .nav-links a {
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #077f43;
+      }
 .header-icons {
   display: flex;
   align-items: center;
@@ -146,6 +182,39 @@ nav ul li a:hover {
   .logo {
     font-size: 20px;
   }
+
+  .nav-links {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background-color: #fff;
+      flex-direction: column;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      display: none;
+      z-index: 99;
+    }
+
+    .nav-links.active {
+      display: flex;
+    }
+
+    .nav-links ul {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .nav-links ul li {
+      margin: 10px 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+  
 }
 
 @media (max-width: 480px) {
@@ -160,7 +229,14 @@ nav ul li a:hover {
 
       /* Hero Section */
       .hero {
-        background-image: linear-gradient(45deg, #2a2a2a, #0d0d0d);
+        height: 75vh;
+        background-image: url('Desktop - 5.png');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
         color: white;
         padding: 60px 0;
         border-radius: 50px;
@@ -247,8 +323,8 @@ nav ul li a:hover {
       }
 
       .service-card {
-        background-color: #ffb100;
-        border-radius: 10px;
+        background-image: url('Desktop - 6.png');
+        border-radius: 40px;
         padding: 60px;
         transition: transform var(--transition-speed);
         border: 1px solid rgba(255, 255, 255, 0.1);
@@ -259,6 +335,8 @@ nav ul li a:hover {
         justify-content: space-between;
         text-align: center;
         transition: transform 0.3s;
+        margin: 30px;
+        box-shadow:40%;
       }
 
       .service-card:hover {
@@ -271,6 +349,19 @@ nav ul li a:hover {
 
       .service-card p {
         font-size: 0.9rem;
+      }
+
+      .service-btn {
+        display: inline-block;
+        background-image: linear-gradient(45deg, #000, #000);
+        color: #fff;
+        padding: 10px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
       }
 
       /* Steps */
@@ -522,6 +613,37 @@ nav ul li a:hover {
       }
 
       @media (max-width: 768px) {
+        .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: block;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links ul li {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .hamburger {
+    display: flex;
+    cursor: pointer;
+  }
+        
         .hero-content,
         .why-us-container,
         
@@ -530,6 +652,12 @@ nav ul li a:hover {
           text-align: center;
           font-size: 0.9rem;
         }
+
+        .hero {
+          max-width: 100%;
+          height: 100%;
+        } 
+
 
         .hero-text h1{
           
@@ -547,6 +675,11 @@ nav ul li a:hover {
           margin-bottom: 30px;
           text-align: center;
         }
+
+        .hamburger {
+          display: flex;
+        }
+
 
         .why-us-text h2,
         .cta-text h2 {
@@ -582,49 +715,97 @@ nav ul li a:hover {
           display: none;
         }
       }
+
+
+
+      /* Base animation styles */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  visibility: hidden;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, visibility 0.6s ease-out;
+  will-change: opacity, transform, visibility;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+/* Optional: Different animations for specific sections */
+.fade-in-section.slide-from-left {
+  transform: translateX(-30px);
+}
+
+.fade-in-section.slide-from-left.is-visible {
+  transform: translateX(0);
+}
+
+.fade-in-section.slide-from-right {
+  transform: translateX(30px);
+}
+
+.fade-in-section.slide-from-right.is-visible {
+  transform: translateX(0);
+}
+
+.fade-in-section.zoom-in {
+  transform: scale(0.95);
+}
+
+.fade-in-section.zoom-in.is-visible {
+  transform: scale(1);
+}
     </style>
   </head>
   <body>
     <!-- Header -->
     <header>
       <div class="container header-container">
-        <a href="form.html" class="logo"> <img src="Group 1000004186.png" />
-        <nav>
+        <a href="form.html" class="logo">
+          <img src="Group 1000004186.png" />
+        </a>
+        
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        
+        <nav class="nav-links">
           <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">Blog</a></li>
+            <li><a href="https://wa.me/message/LOZSRLQ7UTRUA1" class="btn">Chat with Us</a></li>
           </ul>
         </nav>
-        <div class="header-icons">
-          
-          <a href="https://wa.me/message/LOZSRLQ7UTRUA1" class="btn">Chat with Us</a>
-        </div>
       </div>
     </header>
+    
 
     <!-- Hero Section -->
+    <section class="about-section fade-in-section">
+      
     <section class="hero">
       <div class="container hero-content">
         <div class="hero-text">
+          <h1>Whenever You Need Money</h1>
           <h1><span id="typed-text"></span></h1></h1>
           <p>
-            Whether it's a dream renovations, education, an unexpected medical expenses, business overheads or a trip to your promised land, We got you, our
+            Whether it's a dream renovation, education, an unexpected medical expenses, business overheads or a trip to your promised land, We got you, our
             loans are designed with your unique financial journey in mind.
           </p>
           <a href="form.html" class="btn">Apply for Loan Now</a>
         </div>
-        <div class="hero-image">
-          <img
-            src="360_F_272902867_xASWPZ0a6EdFm5FmSD1gqMBCgKhKlcPZ_prev_ui.png"
-            alt="Happy customer celebrating loan approval"
-          />
-        </div>
-      </div>
+           </div>
     </section>
+  </section>
 
     <!-- Why Choose Us -->
+    <section class="services-section fade-in-section slide-from-left">
     <section class="why-us">
       <div class="container why-us-container">
         <div class="why-us-text">
@@ -648,49 +829,55 @@ nav ul li a:hover {
         </div>
       </div>
     </section>
+  </section>
 
     <!-- Services -->
+    <section class="testimonials-section fade-in-section zoom-in">
     <section class="services">
       <div class="container">
         <h2>Our Loan Services</h2>
         <div class="services-grid">
           <div class="service-card">
             <h3>Green business Loans</h3>
-           
+           <a href="#" class="service-btn">learn more</a>
           </div>
           <div class="service-card">
             <h3>Travel and Tourism Loans</h3>
+            <a href="#" class="service-btn">learn more</a>
             
           </div>
           <div class="service-card">
             <h3>Health and hospitality Loans</h3>
-           
+            <a href="#" class="service-btn">learn more</a>
+
           </div>
           <div class="service-card">
             <h3>Real Estate and Education Loans</h3>
+            <a href="#" class="service-btn">learn more</a>
             
           </div>
         </div>
       </div>
     </section>
-
+  </section>
     <!-- Steps -->
     <section class="steps">
       <div class="container">
         <h2>3 Easy Steps to Your Loan</h2>
         <div class="steps-grid">
           <div class="step-item">
-            <img src="icons8-rocket-ship-50.png" alt="Application icon" />
+            <img src="CallCenterGraphic.png" alt="Application icon" />
             <h3>Chat with Loan officer</h3>
+            
            
           </div>
           <div class="step-item">
-            <img src="download (21)_prev_ui.png" alt="Review icon" />
-            <h3>RFill out our user-friendly online form in minutesn</h3>
+            <img src="12.png" alt="Review icon" />
+            <h3>Fill out our user-friendly online form in minutesn</h3>
            
           </div>
           <div class="step-item">
-            <img src="download (28)_prev_ui.png" alt="Funds icon" />
+            <img src="user-points-1.png" alt="Funds icon" />
             <h3>Get your funds deposited directly into your account</h3>
             
           </div>
@@ -730,8 +917,7 @@ nav ul li a:hover {
           </div>
           <div class="faq-answer">
             Our basic requirements include being at least 18 years old, having a
-            regular source of income, and a valid bank account. Specific loan
-            products may have additional criteria.
+            regular source of income, and a valid bank account. Plus you need to have a valid government issued Identification(NIN,or Passport) and have a Collateral
           </div>
         </div>
         <div class="faq-item">
@@ -740,7 +926,16 @@ nav ul li a:hover {
             <span class="faq-toggle">+</span>
           </div>
           <div class="faq-answer">
-            You can use Cars, Landed Properties and other high stake inventory, and a chat with our loan officer will clarify this more for you.
+            You can use Cars,Laptops, Household Appliances, Luxury Goods etc. Landed Properties are yet to be accepeted; and a chat with our loan officer will clarify this more for you.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            How long does the approval process take?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+           As Soon as Collateral is inspected and validated
           </div>
         </div>
         <div class="faq-item">
@@ -756,12 +951,20 @@ nav ul li a:hover {
         </div>
         <div class="faq-item">
           <div class="faq-question">
-            How long does the approval process take?
+           What is the minimum amount I can borrow ?
             <span class="faq-toggle">+</span>
           </div>
           <div class="faq-answer">
-            Most applications receive a decision within 24 hours, with funds
-            deposited within 1-3 business days after approval.
+            Our loan amount starts from N50,000.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            Can I make mutiple loan applications?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            Yes, you can make as many applications as you want.
           </div>
         </div>
         <div class="faq-item">
@@ -771,8 +974,8 @@ nav ul li a:hover {
           </div>
           <div class="faq-answer">
             Our interest rates vary based on loan type, term length, your credit
-            profile, and market conditions. Current rates range from 5.99% to
-            18.99% APR.
+            profile, and market conditions. Current rates range start from 5.99% to
+            27.99%  depending on the tenure you want.
           </div>
         </div>
       </div>
@@ -817,25 +1020,7 @@ nav ul li a:hover {
               <li><a href="#">News</a></li>
             </ul>
           </div>
-          <div class="footer-links">
-            <h4>Community</h4>
-            <ul>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Forum</a></li>
-              <li><a href="#">Support</a></li>
-              <li><a href="#">Business Network</a></li>
-            </ul>
-          </div>
-          <div class="footer-links">
-            <h4>Legal</h4>
-            <ul>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms of Service</a></li>
-              <li><a href="#">Cookie Policy</a></li>
-              <li><a href="#">Financial Licenses</a></li>
-            </ul>
-          </div>
-        </div>
+          
         <div class="footer-bottom">
           <p>© 2025 OBARAIBI. All rights reserved.</p>
         </div>
@@ -844,61 +1029,81 @@ nav ul li a:hover {
 
     <script>
       // Simple FAQ toggle functionality
-      document.querySelectorAll(".faq-question").forEach((question) => {
-        question.addEventListener("click", () => {
-          const answer = question.nextElementSibling;
-          const toggle = question.querySelector(".faq-toggle");
+  document.querySelectorAll(".faq-question").forEach((question) => {
+    question.addEventListener("click", () => {
+      const answer = question.nextElementSibling;
+      const toggle = question.querySelector(".faq-toggle");
 
-          if (answer.style.display === "block") {
-            answer.style.display = "none";
-            toggle.textContent = "+";
-          } else {
-            answer.style.display = "block";
-            toggle.textContent = "-";
+      if (answer.style.display === "block") {
+        answer.style.display = "none";
+        toggle.textContent = "+";
+      } else {
+        answer.style.display = "block";
+        toggle.textContent = "-";
+      }
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+    
+    // Fixed hamburger toggle functionality
+    hamburger.addEventListener("click", function () {
+      navLinks.classList.toggle("active");
+    });
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        const href = this.getAttribute("href");
+        if (href !== "#") {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+            });
           }
-        });
+          // Close mobile menu after clicking a link
+          if (window.innerWidth <= 768) {
+            navLinks.classList.remove("active");
+          }
+        }
       });
-      // Typing animation
-      const typedTextSpan = document.querySelector("#typed-text");
-      const textArray = [
-        "Whenever You Need Money",
-        "We've got You Covered",
-        "Safe and Transparent",
-        "Fast and Secure",
-      ];
-      const typingDelay = 100;
-      const erasingDelay = 50;
-      const newTextDelay = 2000;
-      let textArrayIndex = 0;
-      let charIndex = 0;
+    });
+  });
+      
 
-      function type() {
-        if (charIndex < textArray[textArrayIndex].length) {
-          typedTextSpan.textContent +=
-            textArray[textArrayIndex].charAt(charIndex);
-          charIndex++;
-          setTimeout(type, typingDelay);
-        } else {
-          setTimeout(erase, newTextDelay);
-        }
+  document.addEventListener('DOMContentLoaded', function() {
+  // Find all sections you want to animate
+  // You'll need to add the 'fade-in-section' class to each section in your HTML
+  const sections = document.querySelectorAll('.fade-in-section');
+  
+  // Function to check if element is in viewport
+  const isInViewport = element => {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.75 &&
+      rect.bottom >= 0
+    );
+  };
+  
+  // Function to handle scroll events
+  const handleScroll = () => {
+    sections.forEach(section => {
+      if (isInViewport(section)) {
+        section.classList.add('is-visible');
       }
-
-      function erase() {
-        if (charIndex > 0) {
-          typedTextSpan.textContent = textArray[textArrayIndex].substring(
-            0,
-            charIndex - 1
-          );
-          charIndex--;
-          setTimeout(erase, erasingDelay);
-        } else {
-          textArrayIndex++;
-          if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-          setTimeout(type, typingDelay + 1100);
-        }
-      }
-
-      setTimeout(type, newTextDelay + 250);
+    });
+  };
+  
+  // Run once on load to check for elements already in viewport
+  handleScroll();
+  
+  // Add scroll event listener
+  window.addEventListener('scroll', handleScroll);
+});
     </script>
   </body>
 </html>
