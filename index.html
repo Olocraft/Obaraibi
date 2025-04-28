@@ -318,7 +318,7 @@ nav ul li a:hover {
 }
 
 .service-card {
-  background-image: url('Desktop - 6.png');
+  background-image: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
   background-size: cover;
   background-position: center;
   border-radius: 40px;
@@ -337,43 +337,43 @@ nav ul li a:hover {
   Outline: 1px solid black;
 }
 
+/* Services Section */
+.services {
+  padding: 60px 0;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin: 0 20px;
+}
+
+.service-card {
+  background-image: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+  background-position: center;
+  border-radius: 40px;
+  padding: 40px 20px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  box-shadow: var(--shadow);
+  color: var(--white);
+  outline: 1px solid #000;
+}
+
 .service-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .service-card h3 {
-  margin-bottom: 15px;
   font-size: 1.5rem;
   font-weight: bold;
-  color: var(--black);
 }
-
-.service-btn {
-  display: inline-block;
-  background-color: #000;
-  color: var(--white);
-  padding: 10px 20px;
-  border-radius: var(--border-radius);
-  text-decoration: none;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  transition: background-color var(--transition-speed), transform var(--transition-speed);
-  align-self: center;
-  margin-top: 20px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 0.9rem;
-}
-
-.service-btn:hover {
-  background-color: var(--primary-color);
-  color: var(--text-dark);
-  transform: scale(1.05);
-}
-
- 
 /* Steps Section */
 .steps {
   background-color: var(--bg-dark);
