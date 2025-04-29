@@ -838,6 +838,23 @@ footer {
   nav ul {
     display: block;
   }
+
+  .hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1001;
+  align-items: baseline;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--accent-color);
+  margin: 2px 0;
+  transition: all var(--transition-speed) ease;
+}
+
 }
 
 /* Fix animation transition variable */
