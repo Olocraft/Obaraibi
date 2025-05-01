@@ -96,7 +96,7 @@ header {
 .header-container {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   
 }
 
@@ -160,6 +160,8 @@ nav ul li a:hover {
   cursor: pointer;
   z-index: 1001;
   align-items: baseline;
+  margin-botton: 20px;
+
 }
 
 .hamburger span {
@@ -214,7 +216,7 @@ nav ul li a:hover {
 /* Hero Section */
 .hero {
   height: 75vh;
-  background-image: url('bigscreen - 5 (1).png');
+  background-image: url('bigscreen - 5 (2).png');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -222,6 +224,7 @@ nav ul li a:hover {
   justify-content: center;
   text-align: center;
   color: var(--white);
+  min-height: 80%;
   padding: 60px 0;
   border-radius: 50px;
   margin: 30px;
@@ -364,7 +367,7 @@ nav ul li a:hover {
   text-align: center;
   transition: transform var(--transition-speed), box-shadow var(--transition-speed);
   box-shadow: var(--shadow);
-  color: var(--white);
+  color: #000;
   outline: 1px solid #000;
 }
 
@@ -376,7 +379,9 @@ nav ul li a:hover {
 .service-card h3 {
   font-size: 1.5rem;
   font-weight: bold;
+  margin: 10px;
 }
+
 /* Steps Section */
 .steps {
   background-color: var(--bg-dark);
@@ -397,8 +402,8 @@ nav ul li a:hover {
 }
 
 .step-item img {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   margin-bottom: 20px;
 }
 
@@ -756,9 +761,10 @@ footer {
 
 .hero {
   height: 75vh;
-  background-image: url('Desktop - 5.png');
+  background-image: url('Desktop - 5 (2).png');
   background-size: cover;
   background-position: center;
+  max-width: 90%;
   display: flex;
   align-items: right;
   justify-content: center;
@@ -839,24 +845,47 @@ footer {
     display: block;
   }
 
-  .hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  z-index: 1001;
-  align-items: baseline;
-}
 
-.hamburger span {
-  width: 25px;
-  height: 3px;
-  background-color: var(--accent-color);
-  margin: 2px 0;
-  transition: all var(--transition-speed) ease;
-}
 
 }
 
+
+/* Loader Styles */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(245, 245, 245, 0.95); /* Matches --bg-light with opacity */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  transition: opacity 0.5s ease-out;
+}
+
+.loader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader img {
+  width: 100px; /* Adjust size as needed */
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 /* Fix animation transition variable */
 
 
@@ -881,9 +910,9 @@ footer {
         <nav class="nav-links" id="navLinks">
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#service">Services</a></li>
+          
             <li><a href="https://wa.me/message/LOZSRLQ7UTRUA1" class="btn">Chat with Us</a></li>
           </ul>
         </nav>
@@ -911,32 +940,33 @@ footer {
     </section>
   </section>
 
+    
     <!-- Why Choose Us -->
-    <section class="services-section fade-in-section slide-from-left">
-    <section class="why-us">
-      <div class="container why-us-container">
-        <div class="why-us-text">
-          <h2>Why Choose Us</h2>
-          <p>
-            Fast Approvals – Get funds deposited typically within days.
-            Competitive Rates – Transparent and affordable interest rates
-            tailored to your financial profile.
-          </p>
-          <p>
-            Flexible Repayment Options – Select a plan that works with your
-            budget. Trusted by Thousands – Join our growing community of
-            satisfied customers who have achieved their financial goals with our
-            support. Personal Support – Trained experts are available every step
-            of the way.
-          </p>
-          <a href="https://wa.me/message/LOZSRLQ7UTRUA1" class="btn">Learn More About Us</a>
-        </div>
-        <div class="why-us-image">
-          <img src="6285106.jpg" alt="People using our services" />
-        </div>
+<section class="services-section fade-in-section slide-from-left">
+  <section class="why-us">
+    <div class="container why-us-container">
+      <div class="why-us-text">
+        <h2>Why Choose Us</h2>
+        <p>
+          <strong>1. Privacy:</strong> Don't worry; we don't discuss other people's businesses. Because you prefer to keep your business discreet, we have taken this even further with our End-to-End Policy; all your business transactions remain discreet with us.
+        </p>
+        <p>
+          <strong>2. Multiple Loans:</strong> You can always get another loan, even with an ongoing one. Because we understand, we have evolved a Simultaneous Loan Policy to enable you access multiple loans simultaneously. This means you can apply for another loan even when you have one or two unpaid.
+        </p>
+        <p>
+          <strong>3. Easy Payment:</strong> You can pay however and whenever you want, in parts or as a whole, daily, weekly, or however you choose, within the loan tenure.
+        </p>
+        <p>
+          <strong>4. Peace of Mind:</strong> Relax! We won't call or text you; just pay whenever you can within the period you choose.
+        </p>
+        <a href="https://wa.me/message/LOZSRLQ7UTRUA1" class="btn">Learn More About Us</a>
       </div>
-    </section>
+      <div class="why-us-image">
+        <img src="6285106.jpg" alt="People using our services" />
+      </div>
+    </div>
   </section>
+</section>
 
     <!-- Services -->
     <section class="testimonials-section fade-in-section zoom-in">
@@ -946,21 +976,27 @@ footer {
         <div class="services-grid">
           <div class="service-card">
             <h3>Green business Loans</h3>
-           <a href="#" class="service-btn">learn more</a>
+           <a href="about.html" class="service-btn">learn more</a>
           </div>
           <div class="service-card">
             <h3>Travel and Tourism Loans</h3>
-            <a href="#" class="service-btn">learn more</a>
+            <a href="about.html" class="service-btn">learn more</a>
             
           </div>
           <div class="service-card">
             <h3>Health and hospitality Loans</h3>
-            <a href="#" class="service-btn">learn more</a>
+            <a href="about.html" class="service-btn">learn more</a>
 
           </div>
           <div class="service-card">
-            <h3>Real Estate and Education Loans</h3>
-            <a href="#" class="service-btn">learn more</a>
+            <h3>Real Estate </h3>
+            <a href="about.html" class="service-btn">learn more</a>
+            
+          </div>
+
+          <div class="service-card">
+            <h3>Education Loans</h3>
+            <a href="about.html" class="service-btn">learn more</a>
             
           </div>
         </div>
@@ -980,7 +1016,7 @@ footer {
           </div>
           <div class="step-item">
             <img src="12.png" alt="Review icon" />
-            <h3>Fill out our user-friendly online form in minutesn</h3>
+            <h3>Fill out our user-friendly online form in minutes</h3>
            
           </div>
           <div class="step-item">
@@ -1007,7 +1043,7 @@ footer {
           </div>
           <div class="stat-item">
             <p class="stat-number">5 yrs</p>
-            <p>Experience in loan lending</p>
+            <p>Experience in Money lending</p>
           </div>
         </div>
       </div>
@@ -1043,17 +1079,6 @@ footer {
           </div>
           <div class="faq-answer">
            As Soon as Collateral is inspected and validated
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">
-            What documents do I need to apply?
-            <span class="faq-toggle">+</span>
-          </div>
-          <div class="faq-answer">
-            Typically, you'll need ID verification, proof of income, bank
-            statements, and possibly additional documents depending on the loan
-            type.
           </div>
         </div>
         <div class="faq-item">
@@ -1097,8 +1122,7 @@ footer {
           <div class="footer-about">
             <a href="#" class="footer-logo">OBARAIBI</a>
             <p>
-              Helping individuals and businesses achieve their financial goals
-              through flexible, transparent lending solutions since 2019.
+              Helping Individuals and Businesses since 2019.
             </p>
             <div class="footer-social">
               <a href="#"><i>f</i></a>
@@ -1211,6 +1235,21 @@ footer {
   
   // Add scroll event listener
   window.addEventListener('scroll', handleScroll);
+});
+
+// Loader Script
+document.addEventListener("DOMContentLoaded", function () {
+  const loader = document.createElement("div");
+  loader.classList.add("loader");
+  loader.innerHTML = '<img src="Group 1000004186.png" alt="Loading...">';
+  document.body.appendChild(loader);
+
+  setTimeout(() => {
+    loader.classList.add("hidden");
+    setTimeout(() => {
+      loader.remove();
+    }, 500); // Matches transition duration
+  }, 5000); // 5 seconds
 });
     </script>
   </body>
