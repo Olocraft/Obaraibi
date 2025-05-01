@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OBARAIBI - About Us</title>
+    <style>
+      /* CSS Reset and Global Styles */
+      :root {
+        --primary-color: #ffc107;
+        --primary-dark: #ffb100;
+        --accent-color: #077f43;
+        --text-dark: #333;
+        --text-light: #ccc;
+        --bg-dark: #111;
+        --bg-light: #f5f5f5;
+        --white: #fff;
+        --transition-speed: 0.3s;
+        --border-radius: 25px;
+        --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        --max-width: 1200px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2.2rem;
+        color: var(--text-dark);
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        background-image: linear-gradient(
+          45deg,
+          var(--primary-color),
+          var(--primary-dark)
+        );
+        color: #000;
+        padding: 10px 20px;
+        border-radius: var(--border-radius);
+        text-decoration: none;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: background-color var(--transition-speed);
+      }
+
+      .btn:hover {
+        background-color: #a37c05;
+      }
+
+      /* Header */
+      header {
+        background-color: var(--white);
+        border-radius: 20px;
+        margin: 20px;
+        padding: 15px;
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        outline: 2px solid #000;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        color: var(--text-dark);
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+
+      .logo img {
+        height: 2rem;
+      }
+
+      .logo span {
+        color: var(--accent-color);
+      }
+
+      /* Navigation */
+      nav ul {
+        display: flex;
+        list-style: none;
+        align-items: center;
+      }
+
+      nav ul li {
+        margin-left: 20px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: var(--text-dark);
+        font-weight: 500;
+        transition: color var(--transition-speed);
+      }
+
+      nav ul li a:hover {
+        color: var(--accent-color);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+      }
+
+      /* Hamburger Menu */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        z-index: 1001;
+      }
+
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: var(--accent-color);
+        margin: 2px 0;
+        transition: all var(--transition-speed) ease;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      /* Overlay for mobile menu */
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+      }
+
+      .overlay.active {
+        display: block;
+      }
+
+      /* About Hero Section */
+      .about-hero {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.7)
+          ),
+          url("6285106.jpg");
+        background-size: cover;
+        background-position: center;
+        color: var(--white);
+        text-align: center;
+        padding: 100px 20px;
+        border-radius: 50px;
+        margin: 30px;
+      }
+
+      .about-hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: var(--primary-color);
+      }
+
+      .about-hero p {
+        max-width: 700px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+      }
+
+      /* Story and Mission Shared Styles */
+      .story-mission-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .story-mission-text {
+        flex: 1;
+      }
+
+      .story-mission-text h2 {
+        text-align: left;
+      }
+
+      .story-mission-text p {
+        margin-bottom: 20px;
+        font-size: 1rem;
+      }
+
+      .story-mission-image {
+        flex: 1;
+        max-width: 50%;
+      }
+
+      .story-mission-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+      }
+
+      /* Our Story Section */
+      .our-story {
+        background-color: var(--white);
+      }
+
+      /* Our Mission Section */
+      .our-mission {
+        background-color: var(--bg-light);
+      }
+
+      .mission-container {
+        flex-direction: row-reverse;
+      }
+
+      /* Team Section */
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .team-member {
+        text-align: center;
+        background-color: var(--white);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+      }
+
+      .team-member img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        object-fit: cover;
+      }
+
+      .team-member h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .team-member p {
+        color: var(--text-light);
+        font-size: 0.9rem;
+      }
+
+      /* CTA Section */
+      .cta {
+        background-color: var(--bg-dark);
+        color: var(--white);
+        padding: 100px 0;
+        text-align: center;
+      }
+
+      .cta h2 {
+        margin-bottom: 20px;
+        color: var(--white);
+      }
+
+      .cta p {
+        max-width: 700px;
+        margin: 0 auto 30px;
+        font-size: 1.1rem;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--bg-dark);
+        color: var(--white);
+        padding: 60px 0 30px;
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 30px;
+      }
+
+      .footer-logo {
+        color: var(--white);
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        display: inline-block;
+      }
+
+      .footer-social {
+        display: flex;
+        margin-top: 20px;
+        gap: 10px;
+      }
+
+      .footer-social a {
+        width: 36px;
+        height: 36px;
+        background-color: var(--text-dark);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        text-decoration: none;
+        transition: background-color var(--transition-speed);
+      }
+
+      .footer-social a:hover {
+        background-color: var(--primary-color);
+        color: var(--bg-dark);
+      }
+
+      .footer-links h4 {
+        margin-bottom: 20px;
+        font-size: 18px;
+      }
+
+      .footer-links ul {
+        list-style: none;
+      }
+
+      .footer-links ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links ul li a {
+        color: var(--text-light);
+        text-decoration: none;
+        transition: color var(--transition-speed);
+      }
+
+      .footer-links ul li a:hover {
+        color: var(--primary-color);
+      }
+
+      .footer-bottom {
+        margin-top: 40px;
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid var(--text-dark);
+        font-size: 0.9rem;
+        color: var(--text-light);
+      }
+
+      /* Animation Styles */
+      .fade-in-section {
+        opacity: 0;
+        transform: translateY(20px);
+        visibility: hidden;
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .fade-in-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+      }
+
+      .fade-in-section.slide-from-left {
+        transform: translateX(-30px);
+      }
+
+      .fade-in-section.slide-from-left.is-visible {
+        transform: translateX(0);
+      }
+
+      .fade-in-section.slide-from-right {
+        transform: translateX(30px);
+      }
+
+      .fade-in-section.slide-from-right.is-visible {
+        transform: translateX(0);
+      }
+
+      .fade-in-section.zoom-in {
+        transform: scale(0.95);
+      }
+
+      .fade-in-section.zoom-in.is-visible {
+        transform: scale(1);
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          height: 100vh;
+          width: 250px;
+          background-color: var(--white);
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+          transition: right var(--transition-speed);
+          flex-direction: column;
+          justify-content: center;
+          z-index: 1000;
+        }
+
+        .nav-links.active {
+          right: 0;
+        }
+
+        nav ul {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        nav ul li {
+          margin: 15px 0;
+        }
+
+        .about-hero {
+          padding: 60px 20px;
+          margin: 20px;
+        }
+
+        .about-hero h1 {
+          font-size: 2rem;
+        }
+
+        .story-mission-container {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .story-mission-text {
+          padding: 0;
+          margin-bottom: 30px;
+        }
+
+        .story-mission-image {
+          max-width: 100%;
+        }
+
+        .team-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-container {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .about-hero {
+          border-radius: 25px;
+        }
+
+        .team-member img {
+          width: 120px;
+          height: 120px;
+        }
+
+        h2 {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <a href="index.html" class="logo">
+          <img src="Group 1000004186.png" alt="OBARAIBI Logo" />
+        </a>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <nav class="nav-links" id="navLinks">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li>
+              <a href="https://wa.me/message/LOZSRLQ7UTRUA1" class="btn"
+                >Chat with Us</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div id="overlay" class="overlay"></div>
+
+    <!-- About Hero Section -->
+    <section class="about-hero fade-in-section">
+      <div class="container">
+        <h1>About OBARAIBI</h1>
+        <p>
+          At OBARAIBI, we're dedicated to empowering individuals and businesses
+          with fast, flexible, and discreet financial solutions tailored to
+          their unique needs since 2019.
+        </p>
+      </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="our-story fade-in-section slide-from-left">
+      <div class="container story-mission-container story-container">
+        <div class="story-mission-text story-text">
+          <h2>Our Story</h2>
+          <p>
+            Founded in 2019, OBARAIBI was born out of a vision to provide
+            accessible and stress-free financial solutions. We recognized the
+            challenges many face in securing loans with rigid terms and invasive
+            processes. Our goal was to create a lending service that prioritizes
+            privacy, flexibility, and ease of access.
+          </p>
+          <p>
+            Over the years, we've helped hundreds of clients achieve their
+            dreams, from funding education and travel to supporting business
+            growth and managing unexpected expenses. Our commitment to
+            innovation and customer satisfaction drives everything we do.
+          </p>
+          <a href="https://wa.me/message/LOZSRLQ7UTRUA1" class="btn"
+            >Contact Us</a
+          >
+        </div>
+        <div class="story-mission-image story-image">
+          <img
+            src="cytonn-photography-n95VMLxqM2I-unsplash.jpg"
+            alt="Our story"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Mission Section -->
+    <section class="our-mission fade-in-section slide-from-right">
+      <div class="container story-mission-container mission-container">
+        <div class="story-mission-text mission-text">
+          <h2>Our Mission</h2>
+          <p>
+            Our mission is to provide financial freedom through personalized
+            loan services that respect our clients' privacy and adapt to their
+            lifestyles. We aim to simplify the borrowing process, making it
+            transparent, user-friendly, and accessible to all.
+          </p>
+          <p>
+            We believe in empowering our clients by offering multiple loan
+            options, flexible repayment plans, and a commitment to discretion.
+            At OBARAIBI, your financial journey is our priority.
+          </p>
+          <a href="https://wa.me/message/LOZSRLQ7UTRUA1" class="btn"
+            >Apply Now</a
+          >
+        </div>
+        <div class="story-mission-image mission-image">
+          <img
+            src="christina-wocintechchat-com-rg1y72eKw6o-unsplash.jpg"
+            alt="Our mission"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team fade-in-section zoom-in">
+      <div class="container">
+        <h2>Meet Our Team</h2>
+        <div class="team-grid">
+          <div class="team-member">
+            <img src="team-member1.jpg" alt="Team Member 1" />
+            <h3>W.D. Walton</h3>
+            <p>Founder & CEO</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta fade-in-section">
+      <div class="container">
+        <h2>Join the OBARAIBI Family</h2>
+        <p>
+          Ready to experience financial solutions that work for you? Apply for a
+          loan today or reach out to learn more about how we can support your
+          goals.
+        </p>
+        <a href="https://wa.me/message/LOZSRLQ7UTRUA1" class="btn"
+          >Get Started</a
+        >
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-container">
+          <div class="footer-about">
+            <a href="index.html" class="footer-logo">OBARAIBI</a>
+            <p>Helping Individuals and Businesses since 2019.</p>
+            <div class="footer-social">
+              <a href="#"><i>f</i></a>
+              <a href="#"><i>t</i></a>
+              <a href="#"><i>in</i></a>
+              <a href="#"><i>ig</i></a>
+            </div>
+          </div>
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Contact</h4>
+            <ul>
+              <li>
+                <a href="https://wa.me/message/LOZSRLQ7UTRUA1">WhatsApp</a>
+              </li>
+              <li><a href="#">Email Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 OBARAIBI. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Hamburger menu functionality
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
+        const overlay = document.getElementById("overlay");
+
+        hamburger.addEventListener("click", () => {
+          hamburger.classList.toggle("active");
+          navLinks.classList.toggle("active");
+          overlay.classList.toggle("active");
+        });
+
+        overlay.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          navLinks.classList.remove("active");
+          overlay.classList.remove("active");
+        });
+
+        document.querySelectorAll(".nav-links a").forEach((link) => {
+          link.addEventListener("click", () => {
+            if (window.innerWidth <= 768) {
+              hamburger.classList.remove("active");
+              navLinks.classList.remove("active");
+              overlay.classList.remove("active");
+            }
+          });
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            const href = this.getAttribute("href");
+            if (href !== "#") {
+              e.preventDefault();
+              const target = document.querySelector(href);
+              if (target) {
+                target.scrollIntoView({ behavior: "smooth" });
+              }
+            }
+          });
+        });
+
+        // Animation on scroll
+        const sections = document.querySelectorAll(".fade-in-section");
+        const isInViewport = (element) => {
+          const rect = element.getBoundingClientRect();
+          return (
+            rect.top <=
+              (window.innerHeight || document.documentElement.clientHeight) *
+                0.75 && rect.bottom >= 0
+          );
+        };
+
+        const handleScroll = () => {
+          sections.forEach((section) => {
+            if (isInViewport(section)) {
+              section.classList.add("is-visible");
+            }
+          });
+        };
+
+        handleScroll();
+        window.addEventListener("scroll", handleScroll);
+      });
+    </script>
+  </body>
+</html>
